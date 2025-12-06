@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Miscellaneous
 *.class
 *.log
@@ -43,3 +44,49 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+=======
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub-cache/
+.build/
+.pub/
+flutter_*.png
+
+# Build outputs
+build/
+
+# iOS
+ios/Pods/
+ios/Flutter/Flutter.framework
+ios/Flutter/App.framework
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+
+# Android
+android/.gradle/
+android/local.properties
+
+# VSCode
+.vscode/
+
+# macOS
+macos/Flutter/ephemeral/
+
+# Windows
+windows/flutter/ephemeral/
+
+# Linux
+linux/flutter/ephemeral/
+
+# Misc
+.DS_Store
+*.log
+*.lock
+*.iml
+*.jks
+*.keystore
+
+# Models
+assets/models/*
+>>>>>>> 561e7ed5b98527b0c15f3b34f14f8b95f12c1cf9

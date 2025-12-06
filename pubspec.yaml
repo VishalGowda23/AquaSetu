@@ -1,0 +1,35 @@
+name: aqua_setu
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_lints: ^6.0.0
+
+  # Correct Lottie version
+  lottie: ^3.3.2
+
+  # Additional packages
+  provider: ^6.0.5
+  http: ^1.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/images/images/
+    - assets/animations/

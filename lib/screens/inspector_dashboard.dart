@@ -4,16 +4,15 @@ class InspectorDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0A0F1F), // Dark gradient background base
+      backgroundColor: const Color(0xFF0A1630), // same dark theme as analytics
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
-        centerTitle: true,
+        backgroundColor: const Color(0xFF0A1630),
         title: const Text(
           "Inspector Dashboard",
           style: TextStyle(
-            fontSize: 22,
             fontWeight: FontWeight.bold,
+            fontSize: 22,
             color: Colors.white,
           ),
         ),
@@ -22,149 +21,88 @@ class InspectorDashboard extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// 🔵 TOP HEADER (Same vibe as Analytics)
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Color(0xFF0E1E46), Color(0xFF122859)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+            // ----------------------------------------------------------
+            // HEADER TITLE
+            // ----------------------------------------------------------
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Today's Overview",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
                 ),
-                borderRadius: BorderRadius.circular(18),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.blue.withOpacity(0.3),
-                    blurRadius: 20,
-                    spreadRadius: 1,
-                  ),
-                ],
-              ),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Today's Overview",
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    "Real-time inspection summary",
-                    style: TextStyle(color: Colors.white70, fontSize: 15),
-                  ),
-                ],
               ),
             ),
 
-            const SizedBox(height: 22),
+            const SizedBox(height: 20),
 
-            /// 🔥 Stats Row 1
+            // ----------------------------------------------------------
+            // TOP STAT CARDS (2x2 Grid)
+            // ----------------------------------------------------------
             Row(
               children: [
-                Expanded(
-                  child: statCard(
-                    title: "Inspections",
-                    value: "128",
-                    icon: Icons.fact_check,
-                    glowColor: Colors.blue,
-                  ),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: statCard(
-                    title: "Failed QC",
-                    value: "12",
-                    icon: Icons.error,
-                    glowColor: Colors.redAccent,
-                  ),
-                ),
+                Expanded(child: statCard(
+                  title: "Inspections",
+                  value: "128",
+                  icon: Icons.fact_check,
+                  glowColor: Colors.blue,
+                )),
+                const SizedBox(width: 12),
+                Expanded(child: statCard(
+                  title: "Failed QC",
+                  value: "12",
+                  icon: Icons.warning_rounded,
+                  glowColor: Colors.redAccent,
+                )),
               ],
             ),
 
-            const SizedBox(height: 14),
+            const SizedBox(height: 12),
 
-            /// 🔥 Stats Row 2
             Row(
               children: [
-                Expanded(
-                  child: statCard(
-                    title: "Approved",
-                    value: "116",
-                    icon: Icons.verified,
-                    glowColor: Colors.greenAccent,
-                  ),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: statCard(
-                    title: "Pending",
-                    value: "09",
-                    icon: Icons.access_time_filled,
-                    glowColor: Colors.orangeAccent,
-                  ),
-                ),
+                Expanded(child: statCard(
+                  title: "Approved",
+                  value: "116",
+                  icon: Icons.verified_rounded,
+                  glowColor: Colors.greenAccent,
+                )),
+                const SizedBox(width: 12),
+                Expanded(child: statCard(
+                  title: "Pending",
+                  value: "09",
+                  icon: Icons.access_time_filled,
+                  glowColor: Colors.amber,
+                )),
               ],
-            ),
-
-            const SizedBox(height: 28),
-
-            /// 🔥 ALERTS SECTION
-            const Text(
-              "Recent Alerts",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-
-            const SizedBox(height: 14),
-
-            alertTile(
-              msg: "Expired Catch Found",
-              icon: Icons.error,
-              color: Colors.redAccent,
-            ),
-            alertTile(
-              msg: "Unverified Fisherman ID",
-              icon: Icons.report_gmailerrorred,
-              color: Colors.orangeAccent,
-            ),
-            alertTile(
-              msg: "Low Health Score Detected",
-              icon: Icons.health_and_safety,
-              color: Colors.blueAccent,
             ),
 
             const SizedBox(height: 30),
 
-            /// 🔮 ANALYTICS BUTTON
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40,
-                    vertical: 16,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, "/inspectorAnalytics");
-                },
-                child: const Text(
-                  "View Full Analytics",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
+            // ----------------------------------------------------------
+            // RECENT ALERTS SECTION
+            // ----------------------------------------------------------
+            alertsSection(),
+
+            const SizedBox(height: 30),
+
+            // ----------------------------------------------------------
+            // ANALYTICS BUTTON
+            // ----------------------------------------------------------
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14)),
+              ),
+              onPressed: () {},
+              child: const Text(
+                "View Full Analytics",
+                style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
           ],
@@ -173,9 +111,9 @@ class InspectorDashboard extends StatelessWidget {
     );
   }
 
-  // -------------------------------------------------
-  //  🔥 STAT CARD (Matches Analytics style exactly)
-  // -------------------------------------------------
+  // ==============================================================
+  // ⭐ STAT CARD (Modern Glow Gradient + No Overflow)
+  // ==============================================================
   Widget statCard({
     required String title,
     required String value,
@@ -183,39 +121,50 @@ class InspectorDashboard extends StatelessWidget {
     required Color glowColor,
   }) {
     return Container(
-      height: 130,
-      padding: const EdgeInsets.all(16),
+      height: 150, // prevents overflow
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         gradient: LinearGradient(
-          colors: [glowColor.withOpacity(0.15), Colors.black.withOpacity(0.25)],
+          colors: [
+            glowColor.withOpacity(0.25),
+            const Color(0xFF0A1630),
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         boxShadow: [
           BoxShadow(
-            color: glowColor.withOpacity(0.4),
-            blurRadius: 20,
+            color: glowColor.withOpacity(0.30),
+            blurRadius: 18,
             spreadRadius: 1,
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: glowColor, size: 28),
+          Icon(icon, size: 30, color: glowColor),
           const SizedBox(height: 10),
-          Text(
-            title,
-            style: const TextStyle(color: Colors.white70, fontSize: 14),
-          ),
-          const SizedBox(height: 6),
+
           Text(
             value,
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 26,
+              color: glowColor,
+              fontSize: 30,
               fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          const SizedBox(height: 4),
+
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 15,
+              color: Colors.white70,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ],
@@ -223,38 +172,57 @@ class InspectorDashboard extends StatelessWidget {
     );
   }
 
-  // -------------------------------------------------
-  //  🔥 ALERT TILE (dark theme)
-  // -------------------------------------------------
-  Widget alertTile({
-    required String msg,
-    required IconData icon,
-    required Color color,
-  }) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 14),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.12),
-        border: Border.all(color: color.withOpacity(0.3)),
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, size: 26, color: color),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Text(
-              msg,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
+  // ==============================================================
+  // 🔥 ALERTS SECTION (Cleaner + Matches Dark UI)
+  // ==============================================================
+  Widget alertsSection() {
+    List<Map<String, dynamic>> alerts = [
+      {"msg": "Expired Catch Found", "color": Colors.red, "icon": Icons.error},
+      {"msg": "Unverified Fisherman ID", "color": Colors.orange, "icon": Icons.report},
+      {"msg": "Low Health Score Detected", "color": Colors.blue, "icon": Icons.health_and_safety},
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Recent Alerts",
+          style: TextStyle(
+            fontSize: 22, 
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 12),
+
+        ...alerts.map(
+          (a) => Container(
+            margin: const EdgeInsets.only(bottom: 12),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: a["color"].withOpacity(0.15),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: a["color"].withOpacity(0.3)),
+            ),
+            child: Row(
+              children: [
+                Icon(a["icon"], color: a["color"], size: 26),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    a["msg"],
+                    style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

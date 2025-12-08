@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'login_signup_screen.dart';
 
 class RoleSelectionPage extends StatelessWidget {
+  const RoleSelectionPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

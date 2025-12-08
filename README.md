@@ -1,20 +1,27 @@
-<<<<<<< HEAD
-# aqua_setu
+# Aqua Setu  
+### AI-Powered Fish Catch Identification App
 
-A new Flutter project.
+This project is a Flutter application designed to provide  
+real-time fish species identification, health assessment,  
+weight estimation, and traceability features for fishermen, buyers,  
+and inspectors.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Getting Started
 
-A few resources to get you started if this is your first Flutter project:
+This project is a starting point for a Flutter-based mobile application.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Helpful resources for beginners:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-﻿# FishApp
->>>>>>> 561e7ed5b98527b0c15f3b34f14f8b95f12c1cf9
+- [Flutter Codelab – Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)  
+- [Flutter Cookbook – Common Examples](https://docs.flutter.dev/cookbook)  
+
+For complete Flutter documentation, visit the  
+[official Flutter documentation](https://docs.flutter.dev/),  
+which includes tutorials, samples, and API references.
+
+---
+
+### 📌 Repository Name: **FishApp**  
+(This is the GitHub repository where the Aqua Setu project is stored.)

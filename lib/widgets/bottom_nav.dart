@@ -4,6 +4,8 @@ import 'package:aqua_setu/screens/records_screen.dart';
 import 'package:aqua_setu/screens/camera_page.dart';
 
 class BottomNav extends StatefulWidget {
+  const BottomNav({super.key});
+
   @override
   _BottomNavState createState() => _BottomNavState();
 }

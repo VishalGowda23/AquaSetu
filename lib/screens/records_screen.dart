@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class RecordsScreen extends StatefulWidget {
+  const RecordsScreen({super.key});
+
   @override
   _RecordsScreenState createState() => _RecordsScreenState();
 }
@@ -369,7 +371,7 @@ class StatItem extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const StatItem({required this.title, required this.subtitle});
+  const StatItem({super.key, required this.title, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
